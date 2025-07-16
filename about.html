@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Haitao Wang</title>
+    <meta name="description"
+        content="Learn more about Haitao Wang, Senior Cyber Security Architect with over 20 years of experience in ICT industry.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #00796b;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .site-title {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+            padding: 8rem 0 4rem 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h2 {
+            color: #00796b;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #00796b;
+            padding-bottom: 0.5rem;
+        }
+
+        .experience-item {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00796b;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-company {
+            font-weight: 500;
+            color: #555;
+            margin-bottom: 0.25rem;
+        }
+
+        .experience-duration {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-location {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .experience-description {
+            line-height: 1.6;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            color: #00796b;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-school {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .education-duration {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 5px;
+            border-left: 3px solid #00796b;
+        }
+
+        .skill-category h4 {
+            color: #00796b;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #004d40;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #00796b;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-radius: 0;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .content-section {
+                padding: 1.5rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="site-title">Haitao Wang</a>
+            <button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html">Articles</a></li>
+                <li><a href="/about.html" class="active">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>About Me</h1>
+        <p>Senior Cyber Security Architect with over 20 years of experience in ICT industry</p>
+    </header>
+
+    <main class="main-content">
+        <div class="content-section">
+            <h2>Professional Summary</h2>
+            <p>Over 20 years of experience in the ICT industry with a solid technical background in Telecom networks and
+                Security Architecture. Highly skilled in Software Security, Security assessment, and enterprise-level
+                Security solution design with a strong understanding of cloud security environments.</p>
+        </div>
+
+        <div class="content-section">
+            <h2>Professional Experience</h2>
+
+            <div class="experience-item">
+                <div class="experience-title">Senior Cyber Security Architect</div>
+                <div class="experience-company">Huawei</div>
+                <div class="experience-duration">April 2019 - February 2024 (4 years 11 months)</div>
+                <div class="experience-location">China</div>
+                <div class="experience-description">Security architecture of autonomous networks, enhancing security in
+                    large-scale distributed systems, and focusing on microservice-based architectures.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Visiting Scholar</div>
+                <div class="experience-company">Huawei Cloud Security Operation Center (SOC)</div>
+                <div class="experience-duration">May 2021 - January 2022 (9 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Prepared security operations for ICT business cloud.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Security Professional</div>
+                <div class="experience-company">Huawei</div>
+                <div class="experience-duration">March 2010 - December 2020 (10 years 10 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Led the cyber security technology management committee, introduced
+                    SDL and STRIDE threat modeling, and conducted BSIMM assessments.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">System Engineer</div>
+                <div class="experience-company">Huawei</div>
+                <div class="experience-duration">June 2007 - March 2010 (2 years 10 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Designed and implemented telecom network operation and maintenance
+                    management systems.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Development Team Lead</div>
+                <div class="experience-company">Huawei</div>
+                <div class="experience-duration">March 2005 - October 2008 (3 years 8 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Managed development teams for telecom business provision and
+                    management subsystems.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Software Engineer</div>
+                <div class="experience-company">Huawei</div>
+                <div class="experience-duration">September 2003 - June 2007 (3 years 10 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Developed and implemented telecommunication service provision and
+                    management subsystems, focusing on large-scale communication paths and hybrid management.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Software Engineer</div>
+                <div class="experience-company">sp-nice system co., ltd</div>
+                <div class="experience-duration">May 2001 - September 2003 (2 years 5 months)</div>
+                <div class="experience-location">Guangdong, China</div>
+                <div class="experience-description">Developed power grid scheduling software.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">Technical Director</div>
+                <div class="experience-company">Shenzhen iSolution</div>
+                <div class="experience-duration">April 2000 - May 2001 (1 year 2 months)</div>
+                <div class="experience-location">Shenzhen, China</div>
+                <div class="experience-description">Developed online board games.</div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-title">R & D Engineer</div>
+                <div class="experience-company">Shanghai Ecotech Machine Co.</div>
+                <div class="experience-duration">July 1999 - April 2000 (10 months)</div>
+                <div class="experience-location">Shanghai, China</div>
+                <div class="experience-description">Research and development in mechanical engineering.</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Education</h2>
+
+            <div class="education-item">
+                <div class="education-degree">Master of Cyber Security</div>
+                <div class="education-school">The University of Waikato</div>
+                <div class="education-duration">February 2024 - June 2025</div>
+            </div>
+
+            <div class="education-item">
+                <div class="education-degree">Bachelor's degree in Mechanical Engineering and Automation</div>
+                <div class="education-school">Xi'an Jiaotong University</div>
+                <div class="education-duration">September 1995 - July 1999</div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>Skills & Expertise</h2>
+
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Security Architecture</h4>
+                    <ul class="skill-list">
+                        <li>Security Design Patterns</li>
+                        <li>Threat Modeling (STRIDE)</li>
+                        <li>Secure Development Lifecycle</li>
+                        <li>Cloud Security</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Technologies</h4>
+                    <ul class="skill-list">
+                        <li>Microservices Architecture</li>
+                        <li>Distributed Systems</li>
+                        <li>Telecom Networks</li>
+                        <li>Enterprise Security</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Certifications</h4>
+                    <ul class="skill-list">
+                        <li>CISSP</li>
+                        <li>BSIMM Assessment</li>
+                        <li>Security Best Practices</li>
+                        <li>Compliance Frameworks</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4>Leadership</h4>
+                    <ul class="skill-list">
+                        <li>Team Management</li>
+                        <li>Security Committees</li>
+                        <li>Technical Strategy</li>
+                        <li>Risk Assessment</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:allen.haitao@outlook.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/haitao-wang-35a44a63" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/allen-haitao" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            <div class="footer-copyright">
+                © 2024 Haitao Wang. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('nav-links');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

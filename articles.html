@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articles - Haitao Wang</title>
+    <meta name="description"
+        content="Published cybersecurity articles and insights from Haitao Wang, Senior Cyber Security Architect.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        .navbar {
+            background: #00796b;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .site-title {
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .nav-links a.active {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #00796b 0%, #004d40 100%);
+            color: white;
+            padding: 8rem 0 4rem 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        .articles-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .article-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #00796b;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .article-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .article-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .article-platform {
+            background: #00796b;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .article-platform.medium {
+            background: #00ab6c;
+        }
+
+        .article-platform.linkedin {
+            background: #0077b5;
+        }
+
+        .article-platform.other {
+            background: #666;
+        }
+
+        .article-title {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-title a {
+            color: #00796b;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .article-title a:hover {
+            color: #004d40;
+            text-decoration: underline;
+        }
+
+        .article-excerpt {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .read-more-link {
+            color: #00796b;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .read-more-link:hover {
+            color: #004d40;
+            text-decoration: none;
+        }
+
+        .read-more-link i {
+            font-size: 0.9rem;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: #e0f7fa;
+            color: #00796b;
+            padding: 0.25rem 0.5rem;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            border: 1px solid #b2dfdb;
+        }
+
+        .no-articles {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: #666;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .no-articles h2 {
+            color: #00796b;
+            margin-bottom: 1rem;
+        }
+
+        .no-articles p {
+            margin-bottom: 2rem;
+        }
+
+        .platform-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .platform-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: #00796b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .platform-link:hover {
+            background: #004d40;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: #004d40;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .footer-copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #00796b;
+                flex-direction: column;
+                padding: 1rem;
+                gap: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links a {
+                padding: 1rem;
+                border-radius: 0;
+            }
+
+            .nav-container {
+                position: relative;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 2rem 1rem;
+            }
+
+            .article-item {
+                padding: 1.5rem;
+            }
+
+            .article-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .platform-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="site-title">Haitao Wang</a>
+            <button class="mobile-nav-toggle" onclick="toggleMobileNav()">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/articles.html" class="active">Articles</a></li>
+                <li><a href="/about.html">About</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="page-header">
+        <h1>Published Articles</h1>
+        <p>My cybersecurity insights and thoughts published on various platforms</p>
+    </header>
+
+    <main class="main-content">
+        <div class="articles-list" id="articles-list">
+            <!-- Sample articles - replace with your actual published articles -->
+            <article class="article-item">
+                <div class="article-meta">
+                    <time class="article-date">December 19, 2024</time>
+                    <span class="article-platform medium">Medium</span>
+                </div>
+
+                <h2 class="article-title">
+                    <a href="https://medium.com/@your-username/cloud-security-best-practices" target="_blank"
+                        rel="noopener">
+                        Cloud Security Best Practices for Enterprise Environments
+                    </a>
+                </h2>
+
+                <p class="article-excerpt">
+                    Essential cloud security practices for enterprise environments, drawing from real-world experience
+                    in large-scale distributed systems. Learn about IAM, network security, data protection, and
+                    compliance strategies.
+                </p>
+
+                <div class="article-footer">
+                    <a href="https://medium.com/@your-username/cloud-security-best-practices" target="_blank"
+                        rel="noopener" class="read-more-link">
+                        Read on Medium <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="article-tags">
+                        <span class="tag">cloud</span>
+                        <span class="tag">security</span>
+                        <span class="tag">enterprise</span>
+                        <span class="tag">best-practices</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-item">
+                <div class="article-meta">
+                    <time class="article-date">December 18, 2024</time>
+                    <span class="article-platform linkedin">LinkedIn</span>
+                </div>
+
+                <h2 class="article-title">
+                    <a href="https://www.linkedin.com/pulse/threat-modeling-stride-practical-approach-haitao-wang"
+                        target="_blank" rel="noopener">
+                        Threat Modeling with STRIDE: A Practical Approach
+                    </a>
+                </h2>
+
+                <p class="article-excerpt">
+                    A practical guide to implementing STRIDE threat modeling methodology in software development and
+                    system architecture. Discover how to systematically identify and mitigate security threats.
+                </p>
+
+                <div class="article-footer">
+                    <a href="https://www.linkedin.com/pulse/threat-modeling-stride-practical-approach-haitao-wang"
+                        target="_blank" rel="noopener" class="read-more-link">
+                        Read on LinkedIn <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="article-tags">
+                        <span class="tag">threat-modeling</span>
+                        <span class="tag">STRIDE</span>
+                        <span class="tag">security</span>
+                        <span class="tag">methodology</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-item">
+                <div class="article-meta">
+                    <time class="article-date">November 15, 2024</time>
+                    <span class="article-platform medium">Medium</span>
+                </div>
+
+                <h2 class="article-title">
+                    <a href="https://medium.com/@your-username/secure-development-lifecycle" target="_blank"
+                        rel="noopener">
+                        Implementing Secure Development Lifecycle (SDL) in Practice
+                    </a>
+                </h2>
+
+                <p class="article-excerpt">
+                    Real-world insights on implementing SDL practices in enterprise environments. Learn from my
+                    experience leading security initiatives at large technology companies.
+                </p>
+
+                <div class="article-footer">
+                    <a href="https://medium.com/@your-username/secure-development-lifecycle" target="_blank"
+                        rel="noopener" class="read-more-link">
+                        Read on Medium <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="article-tags">
+                        <span class="tag">SDL</span>
+                        <span class="tag">secure-development</span>
+                        <span class="tag">enterprise</span>
+                        <span class="tag">best-practices</span>
+                    </div>
+                </div>
+            </article>
+
+            <article class="article-item">
+                <div class="article-meta">
+                    <time class="article-date">October 20, 2024</time>
+                    <span class="article-platform other">Tech Blog</span>
+                </div>
+
+                <h2 class="article-title">
+                    <a href="https://techblog.example.com/microservices-security" target="_blank" rel="noopener">
+                        Security Challenges in Microservices Architecture
+                    </a>
+                </h2>
+
+                <p class="article-excerpt">
+                    Exploring the unique security challenges and solutions for microservices-based architectures. Based
+                    on my experience with large-scale distributed systems.
+                </p>
+
+                <div class="article-footer">
+                    <a href="https://techblog.example.com/microservices-security" target="_blank" rel="noopener"
+                        class="read-more-link">
+                        Read Article <i class="fas fa-external-link-alt"></i>
+                    </a>
+                    <div class="article-tags">
+                        <span class="tag">microservices</span>
+                        <span class="tag">architecture</span>
+                        <span class="tag">security</span>
+                        <span class="tag">distributed-systems</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <!-- Placeholder for when no articles are available -->
+        <!-- 
+        <div class="no-articles">
+            <h2>Articles Coming Soon</h2>
+            <p>I'm working on some interesting cybersecurity content. Check back soon for published articles on Medium, LinkedIn, and other platforms!</p>
+            <div class="platform-links">
+                <a href="https://medium.com/@your-username" target="_blank" class="platform-link">
+                    <i class="fab fa-medium"></i> Follow on Medium
+                </a>
+                <a href="https://www.linkedin.com/in/haitao-wang-35a44a63" target="_blank" class="platform-link">
+                    <i class="fab fa-linkedin"></i> Follow on LinkedIn
+                </a>
+            </div>
+        </div>
+        -->
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="mailto:allen.haitao@outlook.com">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+                <a href="https://www.linkedin.com/in/haitao-wang-35a44a63" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="https://github.com/allen-haitao" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
+            <div class="footer-copyright">
+                © 2024 Haitao Wang. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const navLinks = document.getElementById('nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Close mobile nav when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                const navLinks = document.getElementById('nav-links');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
